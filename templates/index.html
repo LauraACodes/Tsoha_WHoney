@@ -1,0 +1,17 @@
+
+<html>
+<head>
+<title>Index</title>
+</head>
+<body>
+    <h1>Wilmalan Hujanan omavalvonta</h1>
+    <br>
+    <h2>Tarkkailulista</h2>
+    <hr>
+    {% for notok in notoks %}
+    Pesä: {{ notok[0] }}
+    Ongelma: {{ notok[1] }}
+    <hr>
+    {% endfor %}
+</body>
+</html>
