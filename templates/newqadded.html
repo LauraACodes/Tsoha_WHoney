@@ -1,0 +1,14 @@
+<h1>Uusi q tallennettu!</h1>
+<br>
+<p>---mikä on muuten huijausta, ei ole!---</p>
+<form action="/" method="GET">
+<input type="submit" value= "Alkuun!">
+</form>   producer = request.form["producer"]
+sql = "SELECT producer_id FROM producers WHERE name=:producer"
+result = db.session.execute(sql, {"name":producer})
+prodid = result.fetchone()
+qname = request.form["qname"]
+date = request.form["ostopvm"]
+sql2 = "INSERT INTO (producer_id, date, name) VALUES (:prodid, :date, :qname)"
+db.session.execute(sql2, {"producer_id":prodid, "date":date, "name":qname})
+db.session.commit()

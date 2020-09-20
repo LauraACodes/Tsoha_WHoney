@@ -29,6 +29,8 @@ CREATE TABLE hivecare (
 );
 CREATE TABLE checkup (
     checkup_id SERIAL PRIMARY KEY,
+    hive_id INTEGER REFERENCES hives,
+    date DATE NOT NULL,
     allok SMALLINT DEFAULT 1,
     explain VARCHAR(200)
 );

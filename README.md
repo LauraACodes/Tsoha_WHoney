@@ -1,3 +1,10 @@
+Ready so far:
+DB descriptions, main elements of moving from main page to other pages, & selecting onfo from db to index page. = Not that much so far because I'm struggling with how to save data to db with FKs. Started that in the investments-page but doesn't work..
+
+
+
+_____________
+
 WHoney
 
 I farm bees as a hobby and hopefully in the future, as a small extra income.
