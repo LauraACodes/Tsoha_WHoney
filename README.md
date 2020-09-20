@@ -1,7 +1,8 @@
 Ready so far:
 DB descriptions, main elements of moving from main page to other pages, & selecting onfo from db to index page. = Not that much so far because I'm struggling with how to save data to db with FKs. Started that in the investments-page but doesn't work..
 
-
+WHoney can also be found from Heroku:
+https://tsoha-whoney.herokuapp.com
 
 _____________
 
