@@ -6,6 +6,8 @@
 <body>
     <h1>Wilmalan Hujanan omavalvonta</h1>
     <br>
+    {% if session.username %}
+
     <form action="/careactions" method="GET">
     <input type="submit" value="Hoivasin mehiläisiä">
     </form>
@@ -23,7 +25,20 @@
     <form action="/statistics" method="GET">
     <input type="submit" value= "Tarkempiin tilastoihin">
     </form>
-
-    
+    <br>
+    <br>
+    <p>Olet kirjautunut nimellä {{ session.username }}. <a href="/logout">Kirjaudu ulos</a></p>
+    <br>
+    {% else %}
+    Jos sinulla on tunnus, kirjaudu sisään. Luo salasana <a href="/start">täällä.</a>
+    <form action="/login" method="POST">
+    <p>Tunnus:<br>
+    <input type="text" name="username"></p>
+    <p>Salasana:<br>
+    <input type="password" name="password"></p>
+    <input type="submit" value="Kirjaudu">
+    </form>
+    {% endif %}
+        
 </body>
 </html>

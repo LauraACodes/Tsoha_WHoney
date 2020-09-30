@@ -4,12 +4,14 @@
 <h3>Ostin kuningattaren!</h3>
 <form action="/newq" method="POST">
 Mistä ostit: 
-<p>
-<input type="radio" name="producer" value="Omaa tuotantoa">Omaa tuotantoa
-<input type="radio" name="producer" value="Mesimestari">Mesimestari
+<p><SELECT input type="text" name="producer_id">
+{% for p in producers %}
+    <OPTION value={{p.producer_id}}>{{p.name}}</OPTION>
+{% endfor %}
+</SELECT>
 </p>
 <p>Minkä niminen kuningatar on:
-<input type="text" name="qname"></p>   
+<input type="text" name="name"></p>   
 <p>Ostopäivä:
 <input type="date" name="ostopvm"></p>
 <input type="submit" value="Tallenna">

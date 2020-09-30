@@ -34,3 +34,8 @@ CREATE TABLE checkup (
     allok SMALLINT DEFAULT 1,
     explain VARCHAR(200)
 );
+CREATE TABLE users (
+    user_id SERIAL PRIMARY KEY, 
+    username TEXT, 
+    password TEXT
+);
