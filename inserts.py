@@ -27,7 +27,7 @@ def sugar(hive_id, date, kg):
     db.session.commit()
     return True
 
-def diseace(hive_id, date, diseace):
+def diseace(hive_id, date, diseace_id):
     care_id = 4
     newhivecare(hive_id, care_id, date)
     hivecare_id = getnewesthivecare()
