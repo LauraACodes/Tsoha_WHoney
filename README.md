@@ -1,9 +1,20 @@
 Ready so far:
-DB descriptions, main elements of moving from main page to other pages, & selecting onfo from db to index page. = Not that much so far because I'm struggling with how to save data to db with FKs. Started that in the investments-page but doesn't work..
+DB descriptions, login/user registration, page structure, all functions that insert info to db, some presentation of hive related info selected from db in careactions page. 
+
+Biggest WIP issues (sorry!): Detailed statistics and visuals. Some input evaluations in DB, html data checks should be ok. Refactoring of especially routes.py.
+
+This is my first app ever, so all feedback is highly appreciated!
 
 WHoney can also be found from Heroku:
 https://tsoha-whoney.herokuapp.com
 
+The system creates some required basic info to the app.
+
+Begin with creating a account. 
+
+Then try the following yourself: Take care of the bees of some hive. You can e.g. add a box, report a check up (tell that everything is NOT ok), and give some sugar to them (they actually get sugar-water mix, but the intake is counted in sugar kgs).
+
+Then from the main page you can go and tell that you have bought a queen and a hive. 
 _____________
 
 WHoney
@@ -18,10 +29,6 @@ I can log e.g. (these actions will change the database):
 - The hives: where, which queen, did it survive the winter, diseases.
 - The farms: where are the farms located, when.
 - Caretaking actions: which and when (check-up, feeding, disease control, queen change..)
-- Harvesting and spinning (? linkous in FI): when, from which hive, how much.
-- Storage: how much raw honey, different sized jarred honey and from which harvest batch.
-- Costs: What kins of investments to equipment, queens, sugar, disease control etc.
-- Profits: What sold and to what price.
 
 In the data warehouse each of these would have their own table,
 and also several links (joint table?) between them. Some additional tables
@@ -30,7 +37,4 @@ probably too, e.g. possible jar sizes.
 Then I could fetch info on (again e.g.):
 - Which actions have been done in each hive in time-order?
 - Which hives are don't have a certain action done this season?
-- Ranking of honey production of different hives or farms?
-- Total production for a season?
-- Total profits for each season?
-- Warehouse situation, quantity and value.
+

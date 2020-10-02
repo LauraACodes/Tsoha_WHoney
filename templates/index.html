@@ -7,13 +7,40 @@
     <h1>Wilmalan Hujanan omavalvonta</h1>
     <br>
     {% if session.username %}
-
-    <form action="/careactions" method="GET">
-    <input type="submit" value="Hoivasin mehiläisiä">
+    <br>
+    <h2>Hoivasin mehiläisiä!</h2>
+    Millä pesällä kävit?
+    <br>
+    <form action="/apu" method="POST" onsubmit="return check(this)">
+    {% for h in hives %}
+    <input type="radio" name="hive_id" value="{{h.hive_id}}">{{h.name}}<br>
+    {% endfor %}
+    <br>
+    Minä päivänä:
+    <input type="date" name="date"></p>
+    <input type="submit" value="Siirry pesälle!">
     </form>
-    <form action="/investments" method=GET>
-    <input type="submit" value="Tein investoinnin">
-    </form>
+    <br>
+    <script>
+        function check(form) {
+            if (form.hive_id.value =="") {
+                alert("Valitse pesä");
+                return false;
+            }
+            if (form.date.value =="") {
+                alert("Valitse päivämäärä");
+                return false;
+            }
+            return true;
+        }
+    </script>
+    <br>
+    <h2>Tein investoinnin</h2>
+    <Button onclick="window.location.href='/buyqueen';">Ostin kuningattaren</Button>
+    <br>
+    <Button onclick="window.location.href='/buyhive';">Ostin pesän</Button>
+    <br>
+    <br>
     <h2>Tarkkailulista</h2>
     <hr>
     {% for notok in notoks %}

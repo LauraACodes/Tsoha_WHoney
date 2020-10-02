@@ -1,0 +1,42 @@
+<h1>Ostit kuningattaren! </h1>
+<h2>Kerro minkälaisen:</h2>
+<br>
+<form action="/newq" method="POST" onsubmit="return check(this)">
+Mistä ostit: 
+<p><SELECT input type="text" name="producer_id">
+{% for p in producers %}
+    <OPTION value={{p.producer_id}}>{{p.name}}</OPTION>
+{% endfor %}
+</SELECT>
+</p>
+<p>Minkä niminen kuningatar on:
+<input type="text" name="name"></p>   
+<p>Ostopäivä:
+<input type="date" name="date"></p>
+<input type="submit" value="Tallenna">
+</form>
+<script>
+    function check(form) {
+        if (form.producer_id.value =="") {
+            alert("Valitse tuottaja");
+            return false;
+        }
+        if (form.name.value =="") {
+            alert("Risti kuningatar!");
+            return false;
+        }
+        if (form.name.value.length > 100) {
+            alert("Kuningatar pärjää lyhyemmälläkin nimellä!");
+            return false;
+        }
+        if (form.date.value =="") {
+            alert("Valitse päivämäärä");
+            return false;
+        }
+        return true;
+    }
+</script>
+
+<br>
+<br>
+Etusivulle pääset takaisin <a href="/">tästä</a>

@@ -1,6 +1,83 @@
-<h1>Ja tänne hoitotoimenpiteet</h1>
-
+<h1>Pesä: {{ hivename }} </h1>
 <br>
-<form action="/" method="GET">
-<input type="submit" value= "Alkuun!">
+Pesän valtiatar: {{ queen }} <br>
+Laatioita pesässä: {{ box }} <br>
+<br>
+{{ comment }}
+<br>
+<h2>Mitä hoivatoimenpiteitä teit?</h2>
+<br>
+<h3>Tarkistin pesän!</h3>
+<form action="/checkup"; method="POST" onsubmit="return check(this)">
+Oliko kaikki kunnossa?<br>
+<input type="radio" name="allok" value="1">
+<label for="1">Kaikki ok!</label><br>
+<input type="radio" name="allok" value="2"><br>
+<label for="2">Ei, tarkkailulistalle!</label><br>
+Kerro lisää:
+<input type="text" name="explain"><br>
+<input type="submit" value="Tallenna tarkistus!">
+<input type="hidden" name=hive_id value="{{ hive_id }}">
+<input type="hidden" name=date value="{{ date }}">
 </form>
+<script>
+    function check(form) {
+        if (form.allok.value == "") {
+            alert("Valitse oliko kaikki kunnossa vai ei");
+            return false;
+        }
+        if (form.explain.value.length > 200) {
+            alert("Ihan näin paljon ei tarvitse runoilla. Max 200 merkkiä!")
+            return false;
+        }
+        return true;
+    }
+</script>
+<br>
+<h3>Lisäsin laatikon!</h3>
+<form action="/addbox"; method="POST">
+<input type="submit" value="Lisää laatikko">
+<input type="hidden" name=hive_id value="{{ hive_id }}">
+<input type="hidden" name=date value="{{ date }}">
+</form>
+<br>
+
+<h3>Ruokin porukan!</h3>
+<form action="/feeding"; method="POST" onsubmit="return check2(this)">
+Monta kiloa sokeria meni?<br>    
+<input type="number" name="kg" value="Monta kiloa sokeria meni?"><br> 
+<input type="submit" value="Tallenna sokerit!">
+<input type="hidden" name=hive_id value="{{ hive_id }}">
+<input type="hidden" name=date value="{{ date }}">
+</form>
+<br>
+<script>
+    function check2(form) {
+        if (form.kg.value == "") {
+            alert("Kerrothan paljonko sokeria meni.");
+            return false;
+        }
+        return true;
+    }
+</script>
+<br>
+<h3>Torjuin tauteja!</h3>
+<form action="/disease"; method="POST" onsubmit="return check3(this)">
+Minkä toimenpiteen teit?<br>
+{% for d in diseaces %}
+<input type="radio" name="diseace_id" value="{{d.diseace_id}}">{{d.name}}<br>
+{% endfor %}
+<input type="submit" value="Tallenna torjunta!">
+<input type="hidden" name=hive_id value="{{ hive_id }}">
+<input type="hidden" name=date value="{{ date }}">
+</form>
+<script>
+    function check3(form) {
+        if (form.diseace_id.value == "") {
+            alert("Valitse minkä torjuntatoimen teit!");
+            return false;
+        }
+        return true;
+    }
+</script>
+Etusivulle pääset takaisin <a href="/">tästä</a>
