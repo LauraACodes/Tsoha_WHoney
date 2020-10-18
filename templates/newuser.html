@@ -1,10 +1,24 @@
-Uusi mehiläisten hoivaaja - Luo ensin käyttäjätili!
-<form action="/newuser" method="POST">
-    <p>Keksi itsellesi tunnus:<br>
-    <input type="text" name="username" required></p>
-    <p>Ja vielä kunnollinen salasana:<br>
-    <input type="password" name="password" required></p>
-    <input type="submit" value="Luo tili painamalla tästä!">
-</form>
+{% extends "layout.html" %}
+{% block title %}Registration{% endblock %}
+{% block content %}
 
-<p>Onko sinulla jo tili?</p><a href="/">Kirjaudu täällä!</a>
+<body>
+    <header class="header">
+        <img src="../static/wlogo.png" alt="wlogo" style="float:left;width:15%""><h1>Wilmalan Hujanan omavalvonta</h1>
+    </header>
+    <br>
+    <section class="section">
+        <ha>Uusi mehiläisten hoivaaja - Luo ensin käyttäjätili!</ha>
+        <form action="/newuser" method="POST">
+            <p>Keksi itsellesi tunnus:<br>
+            <input type="text" name="username" required></p>
+            <p>Ja vielä kunnollinen salasana:<br>
+            <input type="password" name="password" required></p>
+            <input type="submit" value="Luo tili painamalla tästä!">
+        </form>
+    </section>
+    <div class="footer">
+        Etusivulle pääset takaisin <a href="/">tästä</a>
+    </div>
+{% endblock %}
+</body>

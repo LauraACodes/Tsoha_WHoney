@@ -1,9 +1,18 @@
-<!DOCTYPE html>
-<html>
-<head>
-</head>
+{% extends "layout.html" %}
+{% block title %}Error{% endblock %}
+{% block content %}
 <body>
-<h1>Kaikki meni pieleen ja mehiläiset suuttu!</h1>
-{{ errordet }}
+    <header class="header">
+        <img src="../static/wlogo.png" alt="wlogo" style="float:left;width:15%""><h1>Wilmalan Hujanan omavalvonta</h1>
+    </header>
+    <br>
+    <section class="section">
+        <h1>Kaikki meni pieleen ja mehiläiset suuttu!</h1>
+        {{ errordet }}
+    </section>
+    
+    <div class="footer">
+        Etusivulle pääset takaisin <a href="/">tästä</a>
+    </div>
 </body>
-</html>
+{% endblock %}

@@ -54,6 +54,13 @@ CREATE TABLE sugar(
     date DATE NOT NULL,
     kg SMALLINT
 );
+CREATE TABLE harvest(
+    harvest_id SERIAL PRIMARY KEY,
+    hivecare_id INTEGER REFERENCES hivecare,
+    hive_id INTEGER REFERENCES hives,
+    date DATE NOT NULL,
+    boxes SMALLINT,
+);
 CREATE TABLE users (
     user_id SERIAL PRIMARY KEY, 
     username TEXT, 

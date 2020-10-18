@@ -1,71 +1,79 @@
+{% extends "layout.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
 
-<html>
-<head>
-<title>Index</title>
-</head>
 <body>
-    <h1>Wilmalan Hujanan omavalvonta</h1>
+    <header class="header">
+        <img src="../static/wlogo.png" alt="wlogo" style="float:left;width:15%""><h1>Wilmalan Hujanan omavalvonta</h1>
+    </header>
     <br>
-    {% if session.username %}
-    <br>
-    <h2>Hoivasin mehiläisiä!</h2>
-    Millä pesällä kävit?
-    <br>
-    <form action="/apu" method="POST" onsubmit="return check(this)">
-    {% for h in hives %}
-    <input type="radio" name="hive_id" value="{{h.hive_id}}">{{h.name}}<br>
-    {% endfor %}
-    <br>
-    Minä päivänä:
-    <input type="date" name="date"></p>
-    <input type="submit" value="Siirry pesälle!">
-    </form>
-    <br>
-    <script>
-        function check(form) {
-            if (form.hive_id.value =="") {
-                alert("Valitse pesä");
-                return false;
+    <section>
+    <div class="article">
+        {% if session.username %}
+        <h2>Hoivasin mehiläisiä!</h2>
+        Millä pesällä kävit?
+        <br>
+        <form action="/apu" method="POST" onsubmit="return check(this)">
+            {% for h in hives %}
+            <input type="radio" name="hive_id" value="{{h.hive_id}}">{{h.name}}<br>
+            {% endfor %}
+            <br>
+            Minä päivänä:
+            <input type="date" name="date"></p>
+            <input type="submit" value="Siirry pesälle!">
+        </form>
+        <br>
+        <script>
+            function check(form) {
+                if (form.hive_id.value =="") {
+                    alert("Valitse pesä");
+                    return false;
+                }
+                if (form.date.value =="") {
+                    alert("Valitse päivämäärä");
+                    return false;
+                }
+                return true;
             }
-            if (form.date.value =="") {
-                alert("Valitse päivämäärä");
-                return false;
-            }
-            return true;
-        }
-    </script>
-    <br>
-    <h2>Tein investoinnin</h2>
-    <Button onclick="window.location.href='/buyqueen';">Ostin kuningattaren</Button>
-    <br>
-    <Button onclick="window.location.href='/buyhive';">Ostin pesän</Button>
-    <br>
-    <br>
-    <h2>Tarkkailulista</h2>
-    <hr>
-    {% for notok in notoks %}
-    Pesä: {{ notok[0] }}
-    Ongelma: {{ notok[1] }}
-    <hr>
-    {% endfor %}
-    <br>
-    <form action="/statistics" method="GET">
-    <input type="submit" value= "Tarkempiin tilastoihin">
-    </form>
-    <br>
-    <br>
-    <p>Olet kirjautunut nimellä {{ session.username }}. <a href="/logout">Kirjaudu ulos</a></p>
-    <br>
-    {% else %}
-    Jos sinulla on tunnus, kirjaudu sisään. Luo salasana <a href="/start">täällä.</a>
-    <form action="/login" method="POST">
-    <p>Tunnus:<br>
-    <input type="text" name="username"></p>
-    <p>Salasana:<br>
-    <input type="password" name="password"></p>
-    <input type="submit" value="Kirjaudu">
-    </form>
-    {% endif %}
+        </script>
+    </div>
+
+    <div class="aside">
+        <h2>Pesillä havaitut ongelmat:</h2>
+        <ul>
+            {% for notok in notoks %}
+            <li>Pesä: {{ notok[0] }}, {{ notok[1] }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    </secton>
+    <section>
+    <div class="lowerbox1">
+        <h2>Tein investoinnin</h2>
+        <Button onclick="window.location.href='/buyqueen';">Ostin kuningattaren</Button>
+        <Button onclick="window.location.href='/buyhive';">Ostin pesän</Button>
+    </div>
+
+    <div class="lowerbox2">
+        <h2>Tarkempiin tilastoihin</h2>
+        <Button onclick="window.location.href='/statistics';">Tilastoihin</Button>
+    </div> 
+    </section>
+    <div class="footer">
+        <p>Olet kirjautunut nimellä {{ session.username }}. <a href="/logout">Kirjaudu ulos</a></p>
+        <br>
+        {% else %}
+        Jos sinulla on tunnus, kirjaudu sisään. Luo salasana <a href="/start">täällä.</a>
+        <form action="/login" method="POST">
+            <p>Tunnus:<br>
+            <input type="text" name="username"></p>
+            <p>Salasana:<br>
+            <input type="password" name="password"></p>
+            <input type="submit" value="Kirjaudu">
+        </form>
+        {% endif %}
+    </div>
         
 </body>
 </html>
+{% endblock %}

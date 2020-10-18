@@ -66,14 +66,23 @@ def careactions(hive_id, date):
     hivename = hive[4]
     box = hive[6]
     queen = results.get_queenfromhive(hive_id)
+    freequeens = results.get_freequeens()
     diseaces = results.get_diseaces()
-    return render_template("actions.html", hivename=hivename, queen=queen, box=box, hive_id=hive_id, date=date, diseaces=diseaces)
+    notoks = results.get_hives_notok(hive_id)
+    return render_template("actions.html", hivename=hivename, queen=queen, freequeens=freequeens, box=box, hive_id=hive_id, date=date, diseaces=diseaces, notoks=notoks)
 
 @app.route("/addbox/", methods=["POST"])
 def addbox():
     hive_id = request.form["hive_id"]
     date = request.form["date"]
     inserts.addbox(hive_id, date)
+    return redirect("/careactions/"+str(hive_id)+"/"+str(date))
+
+@app.route("/harvest/", methods=["POST"])
+def harvest():
+    hive_id = request.form["hive_id"]
+    date = request.form["date"]
+    inserts.harvest(hive_id, date)
     return redirect("/careactions/"+str(hive_id)+"/"+str(date))
 
 @app.route("/checkup", methods=["POST"])
@@ -83,6 +92,23 @@ def checkup():
     allok = request.form["allok"]
     explain = request.form["explain"]
     inserts.checkup(hive_id, date, allok, explain)
+    return redirect("/careactions/"+str(hive_id)+"/"+str(date))
+
+@app.route("/fixproblem", methods=["POST"])
+def fixproblem():
+    hive_id = request.form["hive_id"]
+    date = request.form["date"]
+    checkup_id = request.form["checkup_id"]
+    explain = request.form["explain"]
+    inserts.fix(hive_id, date, checkup_id, explain)
+    return redirect("/careactions/"+str(hive_id)+"/"+str(date))
+
+@app.route("/changequeen", methods=["POST"])
+def changequeen():
+    hive_id = request.form["hive_id"]
+    date = request.form["date"]
+    queen_id = request.form["queen_id"]
+    inserts.changequeen(hive_id, date, queen_id)
     return redirect("/careactions/"+str(hive_id)+"/"+str(date))
 
 @app.route("/feeding", methods=["POST"])
@@ -142,4 +168,12 @@ def newh():
 
 @app.route("/statistics")
 def statistics():
-    return render_template("statistics.html")
+    hives_a = results.count_alivehives()
+    hives_alive = hives_a[0]
+    honey_boxes = results.count_honey_boxes()
+    harvested_b = results.get_harvest()
+    harvested_boxes = harvested_b[0]
+    caretaking = results.get_careactions()[0]
+    sugarkg = results.get_sugar()[0]
+    actions = results.get_action_list()
+    return render_template("statistics.html", hives_alive=hives_alive, honey_boxes=honey_boxes, harvested_boxes=harvested_boxes, caretaking=caretaking, sugarkg=sugarkg, actions=actions)

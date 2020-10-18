@@ -1,4 +1,17 @@
-<h1>Uusi pesä tallennettu!</h1>
-<br>
-
-Etusivulle pääset takaisin <a href="/">tästä</a>
+{% extends "layout.html" %}
+{% block title %}New hive added{% endblock %}
+{% block content %}
+<body>
+    <header class="header">
+        <img src="../static/wlogo.png" alt="wlogo" style="float:left;width:15%""><h1>Wilmalan Hujanan omavalvonta</h1>
+    </header>
+    <br>
+    <section class="section">
+        <h1>Uusi pesä tallennettu!</h1>
+    </section>
+    
+    <div class="footer">
+        Etusivulle pääset takaisin <a href="/">tästä</a>
+    </div>
+</body>
+{% endblock %}

@@ -1,54 +1,66 @@
-<h1>Ostit pesän! </h1>
-<br>
-Jos samalla ostit kuningattaren, etkä ole sitä vielä "rekisteriöinyt", tee se <a href="/buyqueen">tästä</a>
-<h2>Kerro minkälaisen:</h2>
-<br>
-<form action="/newh" method="POST" onsubmit="return check(this)">
-Mistä ostit: 
-<p><SELECT input type="text" name="producer_id">
-{% for p in producers %}
-    <OPTION value={{p.producer_id}}>{{p.name}}</OPTION>
-{% endfor %}
-</SELECT>
-</p>
-<p>Minkä niminen pesä on:
-<input type="text" name="name"></p>   
-<p>Minkä niminen kuningatar pesään laitetaan:
-<p><SELECT input type="text" name="queen_id">
-{% for q in queens %}
-<OPTION value={{q.queen_id}}>{{q.name}}</OPTION>
-{% endfor %}
-</SELECT>
-</p>
-<p>Ostopäivä:
-<input type="date" name="date"></p>
-<input type="submit" value="Tallenna">
-</form>
-<br>
-<script>
-    function check(form) {
-        if (form.producer_id.value =="") {
-            alert("Valitse tuottaja");
-            return false;
-        }
-        if (form.name.value =="") {
-            alert("Risti pesä!");
-            return false;
-        }
-        if (form.name.value.length > 100) {
-            alert("Pesä pärjää lyhyemmälläkin nimellä!");
-            return false;
-        }
-        if (form.queen_id.value =="") {
-            alert("Valitse kuningatar");
-            return false;
-        }        
-        if (form.date.value =="") {
-            alert("Valitse päivämäärä");
-            return false;
-        }
-        return true;
-    }
-</script>
-<br>
-Etusivulle pääset takaisin <a href="/">tästä</a>
+{% extends "layout.html" %}
+{% block title %}Investments - hive {% endblock %}
+{% block content %}
+
+<body>
+    <header class="header">
+        <img src="../static/wlogo.png" alt="wlogo" style="float:left;width:15%""><h1>Wilmalan Hujanan omavalvonta</h1>
+    </header>
+    <br>
+    <section class="section">
+        <h1>Ostit pesän! </h1>
+        <br>
+        Jos samalla ostit kuningattaren, etkä ole sitä vielä "rekisteriöinyt", tee se <a href="/buyqueen">tästä</a>
+        <h2>Kerro minkälaisen:</h2>
+        <br>
+        <form action="/newh" method="POST" onsubmit="return check(this)">
+            Mistä ostit: 
+            <p><SELECT input type="text" name="producer_id">
+            {% for p in producers %}
+                <OPTION value={{p.producer_id}}>{{p.name}}</OPTION>
+            {% endfor %}
+                </SELECT></p>
+                <p>Minkä niminen pesä on:
+                <input type="text" name="name"></p>   
+                <p>Minkä niminen kuningatar pesään laitetaan:
+                <p><SELECT input type="text" name="queen_id">
+            {% for q in queens %}
+                <OPTION value={{q.queen_id}}>{{q.name}}</OPTION>
+            {% endfor %}
+                </SELECT></p>
+            <p>Ostopäivä:
+            <input type="date" name="date"></p>
+            <input type="submit" value="Tallenna">
+            </form>
+            <br>
+        <script>
+            function check(form) {
+                if (form.producer_id.value =="") {
+                    alert("Valitse tuottaja");
+                    return false;
+                }
+                if (form.name.value =="") {
+                    alert("Risti pesä!");
+                    return false;
+                }
+                if (form.name.value.length > 100) {
+                    alert("Pesä pärjää lyhyemmälläkin nimellä!");
+                    return false;
+                }
+                if (form.queen_id.value =="") {
+                    alert("Valitse kuningatar");
+                    return false;
+                }        
+                if (form.date.value =="") {
+                    alert("Valitse päivämäärä");
+                    return false;
+                }
+                return true;
+            }
+        </script>
+    </section>
+    <div class="footer">
+        Etusivulle pääset takaisin <a href="/">tästä</a>
+    </div>
+{% endblock %}
+</body>

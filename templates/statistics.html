@@ -1,5 +1,31 @@
-<h1>Statistiikat tänne!</h1>
-<br>
-<form action="/" method="GET">
-<input type="submit" value= "Alkuun!">
-</form>
+{% extends "layout.html" %}
+{% block title %}Statistics{% endblock %}
+{% block content %}
+<body>
+    <header class="header">
+        <img src="../static/wlogo.png" alt="wlogo" style="float:left;width:15%""><h1>Wilmalan Hujanan omavalvonta</h1>
+    </header>
+    <br>
+    <section class="section">
+        <h1>Wilmalan hunajan tilanne</h1>
+        <br>
+        Tilalla yhteensä {{ hives_alive }} aktiivista pesää <br>
+        Pesissä yhteensä {{ honey_boxes }} hunajalaatikkoa <br>
+        Satoa ollaan kerätty tänä vuonna yhteensä {{ harvested_boxes }} laatikkoa.<br>
+        <br>
+        Pesille on tehty yhteensä {{ caretaking }} hoitotoimenpidettä. <br>
+        Sokeria on syötetty yhteensä {{ sugarkg }} kiloa. <br>
+        <br>
+        Uusimmat hoitotoimenpiteet
+        <br>
+        {% for a in actions %}
+        <ul style="list-style-type: square;">
+            <li>{{a.date}} Pesä: {{a.name}} Toimenpide: {{a.care}}</li>
+        </ul>
+        {% endfor %}
+    </section>
+    <div class="footer">
+        Etusivulle pääset takaisin <a href="/">tästä</a>
+    </div>
+</body>
+{% endblock %}
