@@ -2,12 +2,14 @@ from db import db
 import datetime
 
 def get_notok():
-    sql = "SELECT hives.name, checkup.explain, checkup.checkup_id FROM checkup JOIN hives ON hives.hive_id = checkup.hive_id WHERE checkup.allok='2'"
+    sql = "SELECT hives.name, checkup.explain, checkup.checkup_id FROM checkup \
+        JOIN hives ON hives.hive_id = checkup.hive_id WHERE checkup.allok='2'"
     result = db.session.execute(sql)
     return result.fetchall()
 
 def get_hives_notok(hive_id):
-    sql = "SELECT hives.name, checkup.explain, checkup.checkup_id FROM checkup JOIN hives ON hives.hive_id = checkup.hive_id WHERE checkup.allok='2' AND hives.hive_id=:hive_id"
+    sql = "SELECT hives.name, checkup.explain, checkup.checkup_id FROM checkup \
+        JOIN hives ON hives.hive_id = checkup.hive_id WHERE checkup.allok='2' AND hives.hive_id=:hive_id"
     result = db.session.execute(sql, {"hive_id":hive_id})
     return result.fetchall()
 
@@ -17,7 +19,8 @@ def get_queens():
     return result.fetchall()
 
 def get_freequeens():
-    sql = "SELECT queen_id, name FROM queens WHERE queen_id NOT IN (SELECT queen_id FROM hives) AND queens.alive='1'"
+    sql = "SELECT queen_id, name FROM queens WHERE queen_id NOT IN \
+        (SELECT queen_id FROM hives) AND queens.alive='1'"
     result = db.session.execute(sql)
     return result.fetchall()
 
@@ -42,7 +45,8 @@ def get_hive(id):
     return result.fetchone()
 
 def get_queenfromhive(hive_id):
-    sql = "SELECT queens.name FROM hives LEFT JOIN queens ON hives.queen_id = queens.queen_id WHERE hive_id=:hive_id AND queens.alive='1'"
+    sql = "SELECT queens.name FROM hives LEFT JOIN queens ON hives.queen_id = queens.queen_id \
+        WHERE hive_id=:hive_id AND queens.alive='1'"
     result = db.session.execute(sql, {"hive_id":hive_id})
     return result.fetchone()[0]
 
@@ -80,6 +84,8 @@ def get_sugar():
     return result.fetchone()
 
 def get_action_list():
-    sql = "SELECT hivecare.date AS date, hives.name AS name, carelist.name AS care FROM hivecare JOIN carelist ON hivecare.care_id=carelist.care_id JOIN hives ON hivecare.hive_id=hives.hive_id ORDER BY date DESC LIMIT 5"
+    sql = "SELECT hivecare.date AS date, hives.name AS name, carelist.name AS care \
+        FROM hivecare JOIN carelist ON hivecare.care_id=carelist.care_id JOIN hives \
+        ON hivecare.hive_id=hives.hive_id ORDER BY date DESC LIMIT 5"
     result = db.session.execute(sql)
     return result.fetchall()

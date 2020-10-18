@@ -1,6 +1,6 @@
 <!doctype html>
 
-<link rel="stylesheet" href="../../../static/visuals.css?81925331222800344772471325">
+<link rel="stylesheet" href="../../../static/visuals.css?819252232312228334500344772471325">
 <html>
     <head>
         <meta charset="utf-8">
@@ -10,32 +10,27 @@
 
 <body>
     <header class="header">
-        <img src="../../../static/wlogo.png" alt="wlogo" style="float:left;width:15%""><h1>Wilmalan Hujanan omavalvonta</h1>
+        <img src="../../../static/wlogo.png" alt="wlogo" style="float:left; width:12%;"><h1>Pesä: {{ hivename }} </h1>
     </header>
    
     <section class="section">
-        <h1>Pesä: {{ hivename }} </h1>
-        <br>
-        Pesän valtiatar: {{ queen }} <br>
-        Laatioita pesässä: {{ box }} <br>
-        <br>
+        <h2 style="padding-left: 20px; padding-top: 20px;">>Pesän valtiatar: {{queen}}. Laatikoita pesässä: {{box}}. </h2>
+        <h2 style="padding-left: 20px; padding-bottom: 20px">Mitä hoivatoimenpiteitä teit?</h2>
     </section>
 
-    <div class="lowerbox1" style="height: 300px;">
-        <h2>Mitä hoivatoimenpiteitä teit?</h2>
-        <br>
-        <h3>Tarkistin pesän!</h3>
-            <form action="/checkup"; method="POST" onsubmit="return check(this)">
-            Oliko kaikki kunnossa?<br>
+    <div class="lowerbox1" style="height: 350px;">
+        <h2 style="padding-left: 20px;">Tarkistin pesän!</h2>
+            <form action="/checkup"; method="POST" onsubmit="return check(this)" style="padding-left: 20px;">
+            <h3>Oliko kaikki kunnossa?</h3>
             <input type="radio" name="allok" value="1">
             <label for="1">Kaikki ok!</label><br>
             <input type="radio" name="allok" value="2">
             <label for="2">Ei, tarkkailulistalle!</label><br>
             <input type="radio" name="allok" value="3">
             <label for="3">Ei, pesä kuollut. Iso sniif.</label><br>
-            Kerro lisää:
-            <input type="text" name="explain"><br>
-            <input type="submit" value="Tallenna tarkistus!">
+            <h3>Kerro lisää:</h3>
+            <input type="text" name="explain" style="padding-left: 20px; padding-bottom: 20px;"><br>
+            <input type="submit" value="Tallenna tarkistus!" style="background: black; color: white; height: 40px;">
             <input type="hidden" name=hive_id value="{{ hive_id }}">
             <input type="hidden" name=date value="{{ date }}">
         </form>
@@ -55,62 +50,61 @@
         <br>
     </div>
 
-    <div class="lowerbox2" style="height: 300px;">
-        <h3>Selvitä havaittu ongelma:</h3>
-        <form action="/fixproblem"; method="POST">
-            <p>Mikä ongelma fiksattu:
+    <div class="lowerbox2" style="height: 350px;">
+        <h2 style="padding-left: 20px;">Selvitin havaitun ongelman!</h2>
+        <h3 style="padding-left: 20px;">Minkä ongelman ratkaisit?</h3>
+        <form action="/fixproblem"; method="POST" style="padding-left: 20px;">
             <p><SELECT input type="text" name="checkup_id">
             {% for n in notoks %}
             <OPTION value={{n.checkup_id}}>Pesä: {{n[0]}}, {{n[1]}}</OPTION>
             {% endfor %}</SELECT></p>
-            <br>
-            Kerro lisää:
-            <input type="text" name="explain"><br>
-            <input type="submit" value="Tallenna selvitys!">
+            <h3>Kerro lisää:</h3>
+            <input type="text" name="explain" style="padding-bottom: 20px;"><br>
+            <input type="submit" value="Tallenna selvitys!" style="background: black; color: white; height: 40px;">
             <input type="hidden" name=hive_id value="{{ hive_id }}">
             <input type="hidden" name=date value="{{ date }}">
         </form>
     </div>
 
-    <div class="lowerbox1">    
-        <h3>Lisäsin laatikon!</h3>
-        <form action="/addbox"; method="POST">
-            <input type="submit" value="Lisää laatikko">
+    <div class="lowerbox1" style="background-color: goldenrod;">    
+        <h2 style="padding-left: 20px;">Lisäsin laatikon!</h2>
+        <form action="/addbox"; method="POST" style="padding-left: 20px;">
+            <input type="submit" value="Lisää laatikko" style="background: black; color: white; height: 40px;">
             <input type="hidden" name=hive_id value="{{ hive_id }}">
             <input type="hidden" name=date value="{{ date }}">
         </form>
         <br>
     </div>
  
-    <div class="lowerbox2">   
-        <h3>Korjasin sadon!</h3>
-        <form action="/harvest"; method="POST">
-            <input type="submit" value="Korjaa sato!">
+    <div class="lowerbox2" style="background-color: grey;">   
+        <h2 style="padding-left: 20px;">Korjasin sadon!</h2>
+        <form action="/harvest"; method="POST" style="padding-left: 20px;">
+            <input type="submit" value="Korjaa sato!" style="background: black; color: white; height: 40px;">
             <input type="hidden" name=hive_id value="{{ hive_id }}">
             <input type="hidden" name=date value="{{ date }}">
         </form>
         <br>
     </div>  
   
-        <div class="lowerbox1"> 
-            <h3>Vaihdoin kuningattaren!</h3>
-            <form action="/changequeen"; method="POST">
-                <p>Minkä niminen kuningatar pesään laitetaan:
+        <div class="lowerbox1" style="height: 200px"> 
+            <h2 style="padding-left: 20px;">Vaihdoin kuningattaren!</h2>
+            <form action="/changequeen"; method="POST" style="padding-left: 20px;">
+                <h3 style="padding-left: 20px;">Minkä niminen kuningatar pesään laitetaan:</h3>
                 <p><SELECT input type="text" name="queen_id">
                 {% for q in freequeens %}
                     <OPTION value={{q.queen_id}}>{{q.name}}</OPTION>
                 {% endfor %}
-                <input type="submit" value="Vaihda kuningatar">
+                <input type="submit" value="Vaihda kuningatar" style="background: black; color: white; height: 40px;">
                 <input type="hidden" name=hive_id value="{{ hive_id }}">
                 <input type="hidden" name=date value="{{ date }}">
             </form>
         </div>
-        <div class="lowerbox2">
-            <h3>Ruokin porukan!</h3>
-            <form action="/feeding"; method="POST" onsubmit="return check2(this)">
-                Monta kiloa sokeria meni?<br>    
+        <div class="lowerbox2" style="height: 200px">
+            <h2 style="padding-left: 20px;">Ruokin porukan!</h2>
+            <form action="/feeding"; method="POST" onsubmit="return check2(this)" style="padding-left: 20px;">
+                <h3>Monta kiloa sokeria meni?</h3>  
                 <input type="number" name="kg" value="Monta kiloa sokeria meni?"><br> 
-                <input type="submit" value="Tallenna sokerit!">
+                <input type="submit" value="Tallenna sokerit!" style="background: black; color: white; height: 40px;">
                 <input type="hidden" name=hive_id value="{{ hive_id }}">
                 <input type="hidden" name=date value="{{ date }}">
             </form>
@@ -125,14 +119,14 @@
                 }
             </script>
         </div>
-        <section class="section">
-            <h3>Torjuin tauteja!</h3>
-            <form action="/disease"; method="POST" onsubmit="return check3(this)">
-                Minkä toimenpiteen teit?<br>
+        <div class="aside" style="width: 100%; height: 200px; background-color:goldenrod; color: black;">
+            <h2 style="padding-left: 20px; padding-top: 20px;">Torjuin tauteja!</h2>
+            <form action="/disease"; method="POST" onsubmit="return check3(this)" style="padding-left: 20px;">
+                <h3>Minkä toimenpiteen teit?</h3>
                 {% for d in diseaces %}
-                <input type="radio" name="diseace_id" value="{{d.diseace_id}}">{{d.name}}<br>
+                <input type="radio" name="diseace_id" value="{{d.diseace_id}}">{{d.name}}
                 {% endfor %}
-                <input type="submit" value="Tallenna torjunta!">
+                <input type="submit" value="Tallenna torjunta!" style="background: black; color: white; height: 40px;">
                 <input type="hidden" name=hive_id value="{{ hive_id }}">
                 <input type="hidden" name=date value="{{ date }}">
             </form>
@@ -145,9 +139,9 @@
                     return true;
                 }
             </script>
-        </section>
+        </div>
 
-    <div class="footer">
+    <div style="background: white; color: black; padding-top: 20px; text-align: center; padding-bottom: 20px">
         Etusivulle pääset takaisin <a href="/">tästä</a>
     </div>
 

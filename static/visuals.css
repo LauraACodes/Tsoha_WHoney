@@ -1,7 +1,7 @@
 body {
     background-color: black;
     margin: auto;
-    max-width: 100em;
+    max-width: 90em;
     font-family: "Lucida Console", Courier, monospace;
 }
 
@@ -25,18 +25,19 @@ body {
 .article {
     display: block;
     float: left;
-    width: 60%;
+    width: 55%;
     height: 300px;
     background: rgb(254,210,85);
+    
 }
 
 .aside {
     display: block;
     float: right;
-    width: 40%;
+    width: 45%;
     height: 300px;
-    background-color:  rgb(254,210,85);
-    border: solid, medium, black;
+    background-color:grey;
+    color: white;
     list-style-type: square;
 }
 
@@ -44,60 +45,21 @@ body {
     display: block;
     float: left;
     width: 50%;
-    background-color:  rgb(254,210,85);
-    border-width: medium;
-    border-color: black;
+    background-color: grey;
 }
 
 .lowerbox2 {
     display: block;
     float: right;
     width: 50%;
-    background-color:  rgb(254,210,85);
-    border-width: medium;
-    border-color: black;
+    background-color:  goldenrod;
 }
 
-.lowerbox13 {
-    display: block;
-    float: left;
-    width: 30%;
-    background-color:  rgb(254,210,85);
-    border-width: medium;
-    border-color: black;
-}
-
-.lowerbox23 {
-    display: block;
-    width: 30%;
-    background-color:  rgb(254,210,85);
-    border-width: medium;
-    border-color: black;
-}
-
-.lowerbox33 {
-    display: block;
-    float: right;
-    width: 30%;
-    background-color:  rgb(254,210,85);
-    border-width: medium;
-    border-color: black;
-}
-
-.section:after {
+.section:after .lowerbox1:after .lowerbox2:after {
     content: "";
     display: table;
     clear: both;
   }
-
-.footer {
-    display: block;
-    background-color: white;
-    width: 100%;
-    text-align: center;
-    color: black; 
-
-}
 
 .flex-container {
     display: flex;
@@ -105,10 +67,11 @@ body {
 }
 
 .flex-container > div {
-    background-color: orange
+    background-color: orange;
     margin: 10px;
     padding: 20px;
     font-size: 30px;
   }
+  
 
 

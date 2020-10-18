@@ -3,29 +3,26 @@
 {% block content %}
 <body>
     <header class="header">
-        <img src="../static/wlogo.png" alt="wlogo" style="float:left;width:15%""><h1>Wilmalan Hujanan omavalvonta</h1>
+        <img src="../static/wlogo.png" alt="wlogo" style="float:left;width:12%""><h1>Wilmalan Hunajan tilanne</h1>
     </header>
     <br>
-    <section class="section">
-        <h1>Wilmalan hunajan tilanne</h1>
+    <section class="section" style="padding-bottom: 20px; padding-top: 20px;">
+        <h2 style="padding-left: 20px; padding-top: 20px;">Tilalla yhteensä {{ hives_alive }} aktiivista pesää.</h2>
+        <h2 style="padding-left: 20px;">Pesissä yhteensä {{ honey_boxes }} hunajalaatikkoa </h2>
+        <h2 style="padding-left: 20px;">Satoa ollaan kerätty tänä vuonna yhteensä {{ harvested_boxes }} laatikkoa.</h2>
         <br>
-        Tilalla yhteensä {{ hives_alive }} aktiivista pesää <br>
-        Pesissä yhteensä {{ honey_boxes }} hunajalaatikkoa <br>
-        Satoa ollaan kerätty tänä vuonna yhteensä {{ harvested_boxes }} laatikkoa.<br>
+        <h2 style="padding-left: 20px;">Pesille on tehty yhteensä {{ caretaking }} hoitotoimenpidettä.</h2>
+        <h2 style="padding-left: 20px;">Sokeria on syötetty yhteensä {{ sugarkg }} kiloa.</h2>
         <br>
-        Pesille on tehty yhteensä {{ caretaking }} hoitotoimenpidettä. <br>
-        Sokeria on syötetty yhteensä {{ sugarkg }} kiloa. <br>
-        <br>
-        Uusimmat hoitotoimenpiteet
-        <br>
+        <h2 style="padding-left: 20px;">Uusimmat hoitotoimenpiteet</h2>
         {% for a in actions %}
         <ul style="list-style-type: square;">
             <li>{{a.date}} Pesä: {{a.name}} Toimenpide: {{a.care}}</li>
         </ul>
         {% endfor %}
     </section>
-    <div class="footer">
+    <div style="background: white; color: black; padding-top: 20px; text-align: center; padding-bottom: 20px">
         Etusivulle pääset takaisin <a href="/">tästä</a>
     </div>
+    {% endblock %}
 </body>
-{% endblock %}

@@ -69,7 +69,8 @@ def careactions(hive_id, date):
     freequeens = results.get_freequeens()
     diseaces = results.get_diseaces()
     notoks = results.get_hives_notok(hive_id)
-    return render_template("actions.html", hivename=hivename, queen=queen, freequeens=freequeens, box=box, hive_id=hive_id, date=date, diseaces=diseaces, notoks=notoks)
+    return render_template("actions.html", hivename=hivename, queen=queen, freequeens=freequeens, \
+        box=box, hive_id=hive_id, date=date, diseaces=diseaces, notoks=notoks)
 
 @app.route("/addbox/", methods=["POST"])
 def addbox():
@@ -160,7 +161,8 @@ def newh():
     queen_id = request.form["queen_id"]
     name = request.form["name"]
     date = request.form["date"]
-    sql = "INSERT INTO hives (queen_id, producer_id, date, name) VALUES (:queen_id, :producer_id, :date, :name)"
+    sql = "INSERT INTO hives (queen_id, producer_id, date, name) \
+        VALUES (:queen_id, :producer_id, :date, :name)"
     db.session.execute(sql, {"queen_id":queen_id,"producer_id":producer_id,"date":date,"name":name})
     db.session.commit()
     return render_template("newhadded.html")
@@ -176,4 +178,5 @@ def statistics():
     caretaking = results.get_careactions()[0]
     sugarkg = results.get_sugar()[0]
     actions = results.get_action_list()
-    return render_template("statistics.html", hives_alive=hives_alive, honey_boxes=honey_boxes, harvested_boxes=harvested_boxes, caretaking=caretaking, sugarkg=sugarkg, actions=actions)
+    return render_template("statistics.html", hives_alive=hives_alive, honey_boxes=honey_boxes, \
+        harvested_boxes=harvested_boxes, caretaking=caretaking, sugarkg=sugarkg, actions=actions)

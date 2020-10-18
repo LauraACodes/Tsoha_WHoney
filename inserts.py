@@ -19,7 +19,8 @@ def harvest(hive_id, date):
     db.session.commit()
     newhivecare(hive_id, care_id, date)
     hivecare_id = getnewesthivecare()
-    harvest_sql = "INSERT INTO harvest (hivecare_id, hive_id, date, boxes) VALUES (:hivecare_id, :hive_id, :date, :boxes)"
+    harvest_sql = "INSERT INTO harvest (hivecare_id, hive_id, date, boxes) \
+        VALUES (:hivecare_id, :hive_id, :date, :boxes)"
     db.session.execute(harvest_sql, {"hivecare_id":hivecare_id, "hive_id":hive_id, "date":date, "boxes":boxes})
     db.session.commit()
     return True
@@ -28,7 +29,8 @@ def checkup(hive_id, date, allok, explain):
     care_id = 1
     newhivecare(hive_id, care_id, date)
     hivecare_id = getnewesthivecare()
-    sql = "INSERT INTO checkup (hivecare_id, hive_id, date, allok, explain) VALUES (:hivecare_id, :hive_id, :date, :allok, :explain)"
+    sql = "INSERT INTO checkup (hivecare_id, hive_id, date, allok, explain) \
+        VALUES (:hivecare_id, :hive_id, :date, :allok, :explain)"
     db.session.execute(sql, {"hivecare_id":hivecare_id, "hive_id":hive_id, "date":date, "allok":allok, "explain":explain})
     db.session.commit()
     if allok == 3:
@@ -53,7 +55,8 @@ def sugar(hive_id, date, kg):
     care_id = 3
     newhivecare(hive_id, care_id, date)
     hivecare_id = getnewesthivecare()
-    sql = "INSERT INTO sugar (hivecare_id, hive_id, date, kg) VALUES (:hivecare_id, :hive_id, :date, :kg)"
+    sql = "INSERT INTO sugar (hivecare_id, hive_id, date, kg) \
+        VALUES (:hivecare_id, :hive_id, :date, :kg)"
     db.session.execute(sql, {"hivecare_id":hivecare_id, "hive_id":hive_id, "date":date, "kg":kg})
     db.session.commit()
     return True
@@ -69,7 +72,8 @@ def diseace(hive_id, date, diseace_id):
     care_id = 4
     newhivecare(hive_id, care_id, date)
     hivecare_id = getnewesthivecare()
-    sql = "INSERT INTO diseacecont (hivecare_id, hive_id, date, diseace_id) VALUES (:hivecare_id, :hive_id, :date, :diseace_id)"
+    sql = "INSERT INTO diseacecont (hivecare_id, hive_id, date, diseace_id) \
+        VALUES (:hivecare_id, :hive_id, :date, :diseace_id)"
     db.session.execute(sql, {"hivecare_id":hivecare_id, "hive_id":hive_id, "date":date, "diseace_id":diseace_id})
     db.session.commit()
     return True

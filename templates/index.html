@@ -4,23 +4,21 @@
 
 <body>
     <header class="header">
-        <img src="../static/wlogo.png" alt="wlogo" style="float:left;width:15%""><h1>Wilmalan Hujanan omavalvonta</h1>
+        <img src="../static/wlogo.png" alt="wlogo" style="float:left;width:15%; padding-top: 20px"">
+        <h1 style="padding-top: 20px">Wilmalan Hujanan omavalvonta</h1><h2> - Kirjaa antamasi hoiva ja katso lokeja</h2><br>
     </header>
     <br>
     <section>
     <div class="article">
         {% if session.username %}
-        <h2>Hoivasin mehiläisiä!</h2>
-        Millä pesällä kävit?
-        <br>
-        <form action="/apu" method="POST" onsubmit="return check(this)">
+        <h2 style="padding-left: 20px;">Raportoi antamasi hoiva mehiläisille tästä:</h2>
+        <h3 style="padding-left: 20px;">Millä pesällä kävit?</h3>
+        <form action="/apu" method="POST" onsubmit="return check(this)" style="padding-left: 20px;">
             {% for h in hives %}
             <input type="radio" name="hive_id" value="{{h.hive_id}}">{{h.name}}<br>
-            {% endfor %}
-            <br>
-            Minä päivänä:
-            <input type="date" name="date"></p>
-            <input type="submit" value="Siirry pesälle!">
+            {% endfor %}    
+        <h3>Minä päivänä:</h3><input type="date" name="date">
+            <input type="submit" value="Siirry pesälle!" style="background: black; color: white; height: 40px;">
         </form>
         <br>
         <script>
@@ -37,9 +35,10 @@
             }
         </script>
     </div>
+    </section>
 
     <div class="aside">
-        <h2>Pesillä havaitut ongelmat:</h2>
+        <h2 style="padding-left: 20px;">Pesillä havaitut ongelmat:</h2>
         <ul>
             {% for notok in notoks %}
             <li>Pesä: {{ notok[0] }}, {{ notok[1] }}</li>
@@ -49,30 +48,38 @@
     </secton>
     <section>
     <div class="lowerbox1">
-        <h2>Tein investoinnin</h2>
-        <Button onclick="window.location.href='/buyqueen';">Ostin kuningattaren</Button>
-        <Button onclick="window.location.href='/buyhive';">Ostin pesän</Button>
+        <h2 style="padding-left: 20px;">Teitkö investoinnin? Kerro lisää!</h2>
+        <div style="padding-left: 20px; padding-bottom: 20px;">
+            <Button onclick="window.location.href='/buyqueen';" style="background: black; color: white; height: 40px; display: block; float: left; width: 160px;">Ostin kuningattaren</Button>
+            <Button onclick="window.location.href='/buyhive';" style="background: black; color: white; height: 40px; display: block; float: left; width: 160px;">Ostin pesän</Button>
+        </div>
     </div>
 
     <div class="lowerbox2">
-        <h2>Tarkempiin tilastoihin</h2>
-        <Button onclick="window.location.href='/statistics';">Tilastoihin</Button>
+        <h2 style="padding-left: 20px;">Etkö muista mitä olet tehnyt? Katso täältä!</h2>
+        <div style="padding-left: 20px; padding-bottom: 20px;">
+        <Button onclick="window.location.href='/statistics';" style="background: black; color: white; height: 40px; display: block; float: left; width: 160px;">Lokiin!</Button>
+        </div>
     </div> 
     </section>
-    <div class="footer">
-        <p>Olet kirjautunut nimellä {{ session.username }}. <a href="/logout">Kirjaudu ulos</a></p>
-        <br>
-        {% else %}
-        Jos sinulla on tunnus, kirjaudu sisään. Luo salasana <a href="/start">täällä.</a>
-        <form action="/login" method="POST">
-            <p>Tunnus:<br>
-            <input type="text" name="username"></p>
-            <p>Salasana:<br>
-            <input type="password" name="password"></p>
-            <input type="submit" value="Kirjaudu">
-        </form>
-        {% endif %}
-    </div>
+
+    <section>
+        <div style="background: white; color: black; padding-top: 20px; text-align: center; padding-bottom: 20px; width: 100%">
+            
+            <p>Olet kirjautunut nimellä {{ session.username }}. <a href="/logout">Kirjaudu ulos</a></p>
+            <br>
+            {% else %}
+            <h2 style="padding-left: 20px; padding-top: 20px;">Jos sinulla on tunnus, kirjaudu sisään. Luo salasana <a href="/start">täällä.</a></h2>
+            <form action="/login" method="POST" style="padding-left: 20px;">
+                <p>Tunnus:<br>
+                <input type="text" name="username"></p>
+                <p>Salasana:<br>
+                <input type="password" name="password"></p>
+                <input type="submit" value="Kirjaudu" style="background: black; color: white; height: 40px;">
+            </form>
+            {% endif %}
+        </div>
+    </section>
         
 </body>
 </html>

@@ -8,16 +8,16 @@
     </header>
     <br>
     <section class="section">
-        <ha>Uusi mehiläisten hoivaaja - Luo ensin käyttäjätili!</ha>
-        <form action="/newuser" method="POST">
-            <p>Keksi itsellesi tunnus:<br>
+        <h2 style="padding-left: 20px; padding-top: 20px;">Uusi mehiläisten hoivaaja - Luo ensin käyttäjätili!</h2>
+        <form action="/newuser" method="POST" style="padding-left: 20px;">
+            <h3>Keksi itsellesi tunnus:</h3>
             <input type="text" name="username" required></p>
             <p>Ja vielä kunnollinen salasana:<br>
             <input type="password" name="password" required></p>
-            <input type="submit" value="Luo tili painamalla tästä!">
+            <input type="submit" value="Luo tili painamalla tästä!" style="background: black; color: white; height: 40px;">
         </form>
     </section>
-    <div class="footer">
+    <div style="background: white; color: black; padding-top: 20px; text-align: center; padding-bottom: 20px">
         Etusivulle pääset takaisin <a href="/">tästä</a>
     </div>
 {% endblock %}
