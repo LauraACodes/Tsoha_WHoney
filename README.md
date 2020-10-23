@@ -3,7 +3,7 @@ WHoney
 Whoney is ready!  
 
 WHoney can also be found from Heroku:
-https://tsoha-whoney.herokuapp.com
+https://whoney.herokuapp.com
 
 Instructions to use the app:
 * You are a beekeeper. Please register at first.
@@ -33,7 +33,7 @@ Biggest WIP issues (sorry!): Detailed statistics and visuals. Some input evaluat
 This is my first app ever, so all feedback is highly appreciated!
 
 WHoney can also be found from Heroku:
-https://tsoha-whoney.herokuapp.com
+https://whoney.herokuapp.com
 
 The system creates some required basic info to the app.
 
